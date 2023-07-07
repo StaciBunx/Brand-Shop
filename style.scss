@@ -1,0 +1,680 @@
+@import 'vars';
+@import 'mixins';
+@import 'product';
+
+@keyframes animate_grow {
+    0% {
+        transform: scale3d(1, 1, 1);
+    }
+
+    50% {
+        transform: scale3d(1.05, 1.05, 1.05);
+    }
+
+    100% {
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes swing {
+    15% {
+        transform: translateX(5px);
+    }
+
+    30% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(3px);
+    }
+
+    65% {
+        transform: translateX(-3px);
+    }
+
+    80% {
+        transform: translateX(2px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+
+}
+
+.center {
+    max-width: $content-width;
+    margin: 0 auto;
+}
+
+.content {
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.header {
+    background: $default-bg-black;
+    min-height: 75px;
+    position: relative;
+
+    &__content {
+        @include flex(row, center, space-between);
+        min-height: 75px;
+
+        &-left {
+            @include flex (row, flex-end, normal);
+            gap: 40px;
+        }
+
+        &-right {
+            @include flex (row, flex-end, space-between);
+            gap: 40px;
+
+        }
+    }
+}
+
+.fixed {
+    position: fixed;
+    z-index: 10000;
+    width: 100%;
+}
+
+.mobile-menu {
+    position: absolute;
+    visibility: hidden;
+    right: 0;
+    top: 75px;
+    width: 232px;
+    height: 634px;
+    background: white;
+    padding: 32px;
+    transition: visibility 0.2s;
+    box-shadow: 6px 4px 35px rgba(0, 0, 0, 0.21);
+    box-sizing: border-box;
+    z-index: 1;
+
+    &__heading {
+        @include font (700, 14px, 17px);
+        margin-bottom: 24px;
+    }
+
+    &__title {
+        @include font (400, 14px, 17px);
+        color: $select-color;
+        margin-bottom: 12px;
+    }
+
+    &__list:not(:last-child) {
+        margin-bottom: 20px;
+    }
+
+    &__link {
+        @include font (400, 14px, 28px);
+        color: #6F6E6E;
+        margin-left: 32px;
+    }
+
+    &__link:hover {
+        color: $select-color;
+    }
+
+    .dropdown:hover & {
+        visibility: visible;
+    }
+
+}
+
+
+.basket {
+    position: relative;
+
+    &::after {
+        @include grid(center, center);
+        @include font (400, 12px, 14px);
+        position: absolute;
+        content: "5";
+        background: $select-color;
+        color: white;
+        width: 19px;
+        height: 19px;
+        border-radius: 50%;
+        top: -20%;
+        right: -25%;
+    }
+
+}
+
+
+.promo {
+    display: flex;
+    width: 100%;
+    background: $promo-bg;
+    margin: 0 auto 65px;
+    padding-top: 75px;
+
+    &__image {
+        width: 50%;
+    }
+
+    &__content {
+        @include flex(row, center, normal);
+
+    }
+
+    &__title {
+        @include font (900, 48px, 58px);
+    }
+
+    &__heading {
+        @include font (700, 32px, 38px);
+    }
+
+    &__heading-highlight {
+        color: $select-color;
+    }
+
+    &__info {
+        border-left: 12px solid $select-color;
+        height: 92px;
+        padding-left: 16px;
+    }
+}
+
+.animate-grow {
+    animation: animate_grow 2s infinite;
+}
+
+
+.offer {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 96px;
+
+    &__item {
+        position: relative;
+        transition: transform 0.6s;
+    }
+
+    &__item:hover {
+        transform: scale(110%);
+    }
+
+    &__item-big {
+        min-height: 180px;
+        grid-column: 1 / -1;
+    }
+
+    &__content {
+        @include flex (column, center, center);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    &__text {
+        @include font (400, 16px, 19px);
+        text-align: center;
+        color: white;
+    }
+
+    &__heading {
+        @include font (700, 24px, 28px);
+        text-align: center;
+        color: $select-color;
+    }
+}
+
+
+.featured {
+    &__content {
+        margin-bottom: 48px;
+        text-align: center;
+    }
+
+    &__heading {
+        @include font (400, 30px, 36px);
+        margin-bottom: 6px;
+    }
+
+    &__text {
+        @include font (700, 14px, 17px);
+        color: $featured-text-color;
+    }
+
+    &__items {
+        @include flex (row, normal, center);
+        flex-flow: wrap;
+        gap: 30px;
+        margin-bottom: 48px;
+    }
+
+    &__item {
+        position: relative;
+        width: 360px;
+        height: 581px;
+        background: $featured-item-bg;
+    }
+
+    &__add {
+        @include font (400, 14px, 17px);
+        position: absolute;
+        top: 30%;
+        left: 30%;
+        border: 1px solid white;
+        width: 139px;
+        height: 44px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        gap: 11px;
+        color: white;
+    }
+
+    &__item:hover &__img {
+        filter: brightness(0.5);
+    }
+
+    &__item:hover &__add {
+        display: flex;
+    }
+
+    &__item-content {
+        padding: 25px 29px 19px 16px;
+    }
+
+    &__item-heading {
+        @include font (400, 13px, 16px);
+        margin-bottom: 16px;
+        color: black;
+    }
+
+    &__item-text {
+        @include font (300, 14px, 17px);
+        margin-bottom: 16px;
+        color: $featured-item-text-color;
+    }
+
+    &__item-price {
+        @include font (400, 16px, 19px);
+        color: $select-color;
+    }
+}
+
+
+.button {
+    @include flex(row, normal, center);
+    margin-bottom: 96px;
+
+    &__content {
+        @include grid(center, center);
+        border: 1px solid $select-color;
+        width: 211px;
+        height: 47px;
+        transition: all 0.6s;
+    }
+
+    &__text {
+        @include font (400, 16px, 19px);
+        color: $select-color;
+
+    }
+
+    &:hover &__content {
+        background-color: $select_color;
+        border: 1px solid $select-color;
+    }
+
+
+    &:hover &__text {
+        color: white;
+    }
+}
+
+.advantages {
+    background: $default-bg-black;
+    min-height: 340px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.advantage {
+    @include flex(column, center, center);
+
+    &__icon {
+        margin-bottom: 28px;
+    }
+
+    &__heading {
+        @include font (400, 20px, 24px);
+        text-align: center;
+        color: white;
+        margin-bottom: 16px;
+    }
+
+    &__text {
+        @include font (300, 14px, 17px);
+        text-align: center;
+        color: white;
+    }
+}
+
+.swing:hover {
+    animation: swing 1s ease;
+    animation-iteration-count: 1;
+}
+
+
+.subscription {
+    @include flex(row, center, center);
+    min-height: 448px;
+    background: rgba(244, 244, 244, 0.7);
+    background: url(/img/subscription-background-big.jpg) no-repeat center;
+    background-size: cover;
+}
+
+.quote {
+    @include grid(center, center);
+    align-items: center;
+    justify-items: center;
+    max-width: 360px;
+    margin-right: 327px;
+
+    &__image {
+        margin-bottom: 30px;
+    }
+
+    &__text {
+        @include font (400, 20px, 24px);
+        text-align: center;
+
+    }
+}
+
+
+.subscribe {
+
+    &__info {
+        text-align: center;
+        margin-bottom: 32px;
+    }
+
+    &__title {
+        @include font (700, 24px, 40px);
+    }
+
+    &__heading {
+        @include font (400, 18px, 30px);
+    }
+
+    &__form {
+        display: flex;
+    }
+
+    &__form-input {
+        @include flex (row, center, normal);
+        @include font (400, 14px, 17px);
+        background: white;
+        height: 34px;
+        width: 168px;
+        outline: none;
+        padding: 7px 64px 6px 22px;
+        border-radius: 30px 0px 0px 30px;
+        border: 1px solid white;
+    }
+
+    &__form-input:focus {
+        border: 1px solid $select-color;
+        border-right: none;
+
+    }
+
+    &__button {
+        @include flex (row, center, center);
+        @include font (400, 14px, 17px);
+        background: $select-color;
+        text-align: center;
+        border: none;
+        color: white;
+        width: 100px;
+        height: 49px;
+        border-radius: 0px 30px 30px 0px;
+        transition: all 0.6s;
+
+    }
+
+    &__button:hover {
+        background-color: white;
+        color: $select-color;
+        border: 1px solid $select-color;
+    }
+
+    &__button:active {
+        color: white;
+        background: $select-color;
+        border-color: none;
+    }
+
+}
+
+.footer {
+    @include flex (row, center, space-evenly);
+    background: $default-bg-black;
+    color: white;
+    min-height: 79px;
+
+    &__social {
+        display: flex;
+        gap: 7px;
+    }
+
+    &__social-link {
+        @include flex(row, center, center);
+        width: 32px;
+        height: 32px;
+        background-color: white;
+        transition: background-color 0.6s;
+    }
+
+    &__social-link path {
+        transition: fill 0.6s;
+    }
+
+    &__social-link:hover {
+        background-color: $select-color;
+    }
+
+
+    &__social-link:hover path {
+        fill: white;
+    }
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+    .promo__title {
+        font-size: 44px;
+        line-height: 53px;
+
+        &__heading {
+            font-size: 24px;
+            line-height: 29px;
+        }
+
+        &__info {
+            height: 92px;
+            padding-left: 16px;
+        }
+    }
+
+    .offer {
+        gap: 20px;
+        margin-bottom: 110px;
+
+        &__item-big {
+            min-height: 116px;
+        }
+
+    }
+
+
+    .featured__content {
+        margin-bottom: 75px;
+    }
+
+    .featured__items {
+        gap: 16px;
+    }
+
+    .advantages {
+        grid-template-columns: none;
+        min-height: 610px;
+        align-content: center;
+        gap: 50px;
+    }
+
+    .subscription {
+        flex-direction: column;
+        min-height: 693px;
+        background: url(/img/subscription-background-medium.jpg) no-repeat center;
+        background-size: cover;
+        gap: 48px;
+    }
+
+    .quote {
+        margin-right: 0;
+    }
+}
+
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+
+    .content {
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+
+    .header__content-link:not(:first-child) {
+        display: none;
+    }
+
+    .header-right {
+        flex-direction: row-reverse;
+    }
+
+    .promo {
+        min-height: 363px;
+        justify-content: center;
+
+        &__title {
+            font-size: 38px;
+            line-height: 46px;
+        }
+
+        &__heading {
+            font-size: 20px;
+            line-height: 24px;
+        }
+
+        &__image {
+            display: none;
+        }
+
+        &__info {
+            height: 61px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+    }
+
+
+    .offer {
+        grid-template-columns: repeat(1, 1fr);
+        justify-items: center;
+        margin-bottom: 64px;
+
+        &__item-big {
+            min-height: 116px;
+        }
+
+    }
+
+
+    .featured__content {
+        margin-bottom: 64px;
+    }
+
+    .featured__items {
+        gap: 17px;
+        margin-bottom: 42px;
+    }
+
+    .button {
+        margin-bottom: 85px;
+    }
+
+    .advantages {
+        grid-template-columns: none;
+        min-height: 610px;
+        align-content: center;
+        gap: 50px;
+    }
+
+    .subscription {
+        flex-direction: column;
+        min-height: 693px;
+        background: url(/img/subscription-background-medium.jpg) no-repeat center;
+        background-size: cover;
+        gap: 48px;
+    }
+
+    .quote {
+        margin-right: 0;
+    }
+
+
+    .footer {
+        flex-direction: column;
+        padding-top: 43px;
+        padding-bottom: 9px;
+    }
+
+
+    .footer__social {
+        order: -1;
+        margin-bottom: 41px;
+    }
+
+}
