@@ -1,0 +1,251 @@
+@import 'vars';
+@import 'mixins';
+
+.cart {
+    padding-top: 96px;
+    padding-bottom: 128px;
+
+
+    &__box {
+        display: flex;
+        gap: 128px;
+    }
+
+    &__item {
+        display: flex;
+        width: 652px;
+        height: 306px;
+        box-shadow: 17px 19px 24px 0px #00000021;
+        position: relative;
+        margin-bottom: 72px;
+
+    }
+
+    &__item:first-child {
+        margin-bottom: 40px;
+    }
+
+    &__item_content {
+        padding: 22px 31px 62px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__heading {
+        @include font(400, 24px, normal);
+        color: #222;
+        margin-bottom: 42px;
+    }
+
+    &__text {
+        @include font(400, 22px, normal);
+        color: #575757;
+
+        &_price {
+            color: $select-color;
+        }
+    }
+
+    &__text:not(:last-child) {
+        margin-bottom: 6px;
+    }
+
+    &__quantity {
+        display: flex;
+        align-items: flex-end;
+    }
+
+    &__input {
+        @include font(400, 18px, normal);
+        color: #656565;
+        width: 44px;
+        height: 25px;
+        box-sizing: border-box;
+        background-color: #FFFFFF;
+        border: 1px solid #EAEAEA;
+        text-indent: 16px;
+        margin-left: 24px;
+
+
+        &:focus {
+            outline: 2px solid $select-color;
+        }
+    }
+
+    &__close {
+        position: absolute;
+        right: 22px;
+        top: 28px;
+
+        &:hover path {
+            fill: $select-color;
+
+        }
+    }
+
+    &__button_box {
+        display: flex;
+        gap: 192px;
+    }
+
+    &__button {
+        color: #000;
+        font-family: Lato;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        width: 225px;
+        height: 50px;
+        flex-shrink: 0;
+        background-color: white;
+        box-sizing: border-box;
+        border: 1px solid #A4A4A4;
+        transition: all 0.6s;
+
+        &:hover {
+            color: white;
+            background-color: #4A4A4A;
+
+        }
+
+
+    }
+
+}
+
+.address {
+
+    margin-bottom: 57px;
+    margin-top: 17px;
+
+    &__heading {
+        @include font(300, 16px, normal);
+        color: #222;
+        margin-bottom: 21px;
+    }
+
+    &__form {
+        display: grid;
+        gap: 22px;
+    }
+
+    &__input {
+        width: 360px;
+        height: 44px;
+        text-indent: 16px;
+        box-sizing: border-box;
+        background-color: #FFFFFF;
+        border: 1px solid #A4A4A4;
+        outline: none;
+
+        &:focus {
+            outline: 2px solid $select-color;
+            border-color: $select-color;
+        }
+
+        &::placeholder {
+            color: #222;
+            font-family: Lato;
+            font-size: 13px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: normal;
+        }
+    }
+
+    &__input:first-child::placeholder {
+        color: #B1B1B1;
+    }
+
+    &__button {
+        width: 100px;
+        height: 35px;
+        color: #4A4A4A;
+        font-family: Lato;
+        font-size: 11px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        border-radius: 0;
+        box-sizing: border-box;
+        background-color: white;
+        border: 1px solid #A4A4A4;
+        transition: all 0.6s;
+
+        &:hover {
+            color: white;
+            background-color: #4A4A4A;
+
+        }
+
+    }
+}
+
+.summary {
+    width: 360px;
+    height: 214px;
+    background-color: #F5F3F3;
+    padding: 39px 43px 42px 44px;
+    box-sizing: border-box;
+
+
+
+    &__subtotal,
+    &__subtotal_price {
+        @include font(400, 11px, normal);
+        color: #4A4A4A;
+    }
+
+    &__subtotal_box,
+    &__total_box {
+        display: flex;
+        gap: 15px;
+        justify-content: flex-end;
+    }
+
+    &__subtotal_box {
+        margin-bottom: 12px;
+    }
+
+    &__total_box {
+        margin-bottom: 21px;
+    }
+
+
+    &__total {
+        @include font(300, 16px, normal);
+        color: #222;
+
+        &_price {
+            @include font(700, 16px, normal);
+            color: $select-color;
+
+        }
+    }
+
+
+    &__checkout {
+        height: 58px;
+        border-top: 1px solid #E2E2E2;
+        padding-top: 17px;
+    }
+
+    &__button {
+        @include flex(row, center, center);
+        @include font(300, 16px, normal);
+        width: 273px;
+        height: 50px;
+        background-color: $select-color;
+        color: white;
+        transition: all 0.6s;
+
+        &:hover {
+            background-color: white;
+            color: $select-color;
+            border: 1px solid $select-color;
+        }
+
+    }
+
+}
