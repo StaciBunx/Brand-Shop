@@ -28,6 +28,8 @@
 .filter-sort {
     height: 132px;
     position: relative;
+    max-width: 1140px;
+    margin: 0 auto;
 }
 
 .filter {
@@ -106,7 +108,7 @@
 .sort {
     @include flex (row, normal, space-between);
     top: 39px;
-    left: 390px;
+    right: 510px;
     gap: 18px;
     position: absolute;
     box-sizing: border-box;
@@ -282,7 +284,59 @@
 
 @media (min-width: 768px) and (max-width: 1024px) {
 
+    .filter-sort {
+        max-width: 736px;
+        margin: 0 auto;
+    }
+
     .pagination {
         margin-bottom: 63px;
+    }
+
+    .sort {
+        right: 105px;
+    }
+}
+
+@media (max-width:767px) {
+
+    .filter-sort {
+        height: 81px;
+        max-width: 360px;
+        margin: 0 auto;
+    }
+
+    .filter {
+        padding: 0;
+        top: 24px;
+
+
+        &:first-child {
+            margin-right: 62px;
+        }
+
+        &__heading {
+            display: none;
+        }
+
+    }
+
+    .filter__summary>svg {
+        width: 38px;
+        height: 25px;
+    }
+
+    .sort {
+        top: 24px;
+        right: 28px;
+        padding: 0;
+
+        &__summary {
+            font-size: 12px;
+        }
+    }
+
+    .pagination {
+        margin-bottom: 64px;
     }
 }
