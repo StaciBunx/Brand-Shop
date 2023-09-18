@@ -47,4 +47,9 @@ async function fetchData() {
         console.error(error);
     }
 }
+
+function addToCart() {
+
+}
+
 fetchData();

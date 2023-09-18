@@ -1310,7 +1310,7 @@ ul {
 .basket {
   position: relative;
 }
-.basket::after {
+.basket_num {
   display: grid;
   align-content: center;
   justify-content: center;
