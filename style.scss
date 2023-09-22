@@ -72,6 +72,14 @@ ul {
 
 }
 
+.cart__contatiner {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
 .center {
     max-width: $content-width;
     margin: 0 auto;

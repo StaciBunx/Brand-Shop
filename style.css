@@ -663,6 +663,7 @@ summary::-webkit-details-marker {
   position: absolute;
   right: 22px;
   top: 28px;
+  cursor: pointer;
 }
 .cart__close:hover path {
   fill: #F16D7F;
@@ -1215,6 +1216,13 @@ a {
 
 ul {
   list-style-type: none;
+}
+
+.cart__contatiner {
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .center {
