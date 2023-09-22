@@ -175,7 +175,6 @@ ul {
 
 }
 
-
 .promo {
     display: flex;
     width: 100%;
@@ -302,6 +301,7 @@ ul {
         justify-content: center;
         gap: 11px;
         color: white;
+        cursor: pointer;
     }
 
     &__item:hover &__img {

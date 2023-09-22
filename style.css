@@ -1464,6 +1464,7 @@ ul {
   justify-content: center;
   gap: 11px;
   color: white;
+  cursor: pointer;
 }
 .featured__item:hover .featured__img {
   filter: brightness(0.5);
