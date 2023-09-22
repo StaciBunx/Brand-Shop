@@ -1,17 +1,18 @@
 const featuredItems = document.querySelector('.featured__items');
 const cartNum = document.querySelector('.basket_num');
+const cartItemsBox = document.querySelector('.cart__items');
+console.log(cartItemsBox);
 
 async function fetchData(container) {
     try {
         const response = await fetch("./data.json");
         console.log(response);
+
         if (!response.ok) {
             throw new Error("Не удалось получить данные с data JSON");
         }
         const data = await response.json();
-        console.log(data);
-
-
+        // console.log(data);
 
         data.forEach(({ name, image, description, price }) => {
             const featuredItem = `
@@ -44,7 +45,19 @@ async function fetchData(container) {
         `;
             container.insertAdjacentHTML("beforeend", featuredItem);
         });
-        // addToCart();
+
+        featuredItems.addEventListener('click', (e) => {
+            if (e.target.classList.contains('featured__add')) {
+                cartNum.innerHTML++;
+                // addtoCart();
+
+            }
+            console.log(e.target.classList);
+        })
+
+
+
+
     }
     catch (error) {
         console.error(error);
@@ -52,9 +65,3 @@ async function fetchData(container) {
 }
 
 fetchData(featuredItems);
-
-featuredItems.addEventListener('click', (e) => {
-    if (e.target) {
-        cartNum.innerHTML++;
-    }
-})
