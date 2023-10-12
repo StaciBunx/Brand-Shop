@@ -26,7 +26,7 @@ async function fetchData(container, cart) {
                 <p class="featured__item-price">$${price}</p>
             </div>
         </a>
-        <div class="featured__add" data-id="${id}" data-action="add_to_cart">
+        <div class="featured__add" data-id="${id}" actionJS="add_to_cart">
         <svg width="27" height="25" viewBox="0 0 27 25" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -46,7 +46,7 @@ async function fetchData(container, cart) {
         });
 
         featuredItems.addEventListener('click', (e) => {
-            if (e.target.classList.contains('featured__add')) {
+            if (e.target.getAttribute('actionJS')) {
                 cartNum.textContent++;
             }
             for (let i = 0; i < data.length; i++) {
